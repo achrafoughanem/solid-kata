@@ -1,5 +1,5 @@
 package com.codurance.isp;
 
-public interface Animal {
+public interface  RuningAnimal {
     void run();
 }

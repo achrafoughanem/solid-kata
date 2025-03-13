@@ -28,7 +28,6 @@ public class AccountServiceShould {
             new Transaction(LocalDate.of(2014, 4, 2), -100),
             new Transaction(LocalDate.of(2014, 4, 10), 500)
     );
-
     @Mock
     private Clock clock;
 

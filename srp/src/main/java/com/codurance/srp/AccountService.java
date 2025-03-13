@@ -13,7 +13,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static java.util.stream.Collectors.toCollection;
 
 public class AccountService {
-
     private static final String STATEMENT_HEADER = "DATE | AMOUNT | BALANCE";
     private static final String DATE_FORMAT = "dd/MM/yyyy";
     private static final String AMOUNT_FORMAT = "#.00";

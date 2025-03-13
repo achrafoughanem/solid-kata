@@ -1,6 +1,6 @@
 package com.codurance.isp;
 
-public class Bird extends FlyingAnimal {
+public class Bird implements FlyingAnimal, RuningAnimal{
     public void run() {
         System.out.print("Bird is running");
     }

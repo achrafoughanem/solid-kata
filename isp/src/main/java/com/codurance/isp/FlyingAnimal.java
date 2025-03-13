@@ -1,6 +1,6 @@
 package com.codurance.isp;
 
-public abstract class FlyingAnimal implements Animal {
+public interface FlyingAnimal  {
 
     public abstract void fly();
 }
