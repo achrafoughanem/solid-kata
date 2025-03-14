@@ -1,5 +1,6 @@
 package com.codurance.dip;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -26,8 +27,18 @@ public class BirthdayGreeterShould {
     @Mock
     private Clock clock;
 
-    @InjectMocks
+    @Mock
+    EmailSender emailSender;
+
+    @Mock
     private BirthdayGreeter birthdayGreeter;
+
+    @BeforeEach
+    public void setup() {
+        emailSender = new EmailSenderImpl();
+        birthdayGreeter = new BirthdayGreeter(employeeRepository, clock, emailSender);
+
+    }
 
 
     private ByteArrayOutputStream consoleContent = new ByteArrayOutputStream();

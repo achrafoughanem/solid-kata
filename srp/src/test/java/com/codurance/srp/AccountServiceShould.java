@@ -35,13 +35,25 @@ public class AccountServiceShould {
     private TransactionRepository transactionRepository;
 
     @Mock
+    private FormatingService formatingService;
+
+    @Mock
+    private ConsoleService consoleService;
+
+    @Mock
+    private PrintService printService;
+
+    @Mock
     private Console console;
 
     private AccountService accountService;
 
     @BeforeEach
     public void setUp() {
-        accountService = new AccountService(transactionRepository, clock, console);
+        accountService = new AccountServiceImpl(transactionRepository, clock);
+        formatingService = new FormatingServiceImpl();
+        consoleService = new ConsoleServiceImpl(console);
+        printService = new PrintServiceImpl(consoleService,transactionRepository,formatingService);
         lenient().doReturn(TODAY).when(clock).today();
     }
 
@@ -67,7 +79,7 @@ public class AccountServiceShould {
     public void print_statement() {
         given(transactionRepository.all()).willReturn(TRANSACTIONS);
 
-        accountService.printStatement();
+        printService.printStatement();
 
         InOrder inOrder = inOrder(console);
         inOrder.verify(console).printLine("DATE | AMOUNT | BALANCE");
